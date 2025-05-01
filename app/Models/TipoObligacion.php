@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class TipoObligacion extends Model
 {
     use HasFactory;
-
+    protected $table="tipo_obligaciones";
     protected $fillable = ['nombre_obligacion'];
 }
