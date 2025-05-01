@@ -6,8 +6,9 @@ use App\Http\Controllers\TipoObligacionController;
 use App\Http\Controllers\ReservaInsumoController;
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('dashboard');
+})->name('dashboard');
+
 
 Route::resource('detalle_obligaciones', DetalleObligacionController::class);
 Route::resource('insumos', \App\Http\Controllers\InsumoController::class);
