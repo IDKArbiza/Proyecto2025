@@ -7,7 +7,7 @@ use App\Http\Controllers\ReservaInsumoController;
 
 Route::get('/', function () {
     return view('dashboard');
-});
+})->name('dashboard');
 
 Route::resource('detalle_obligaciones', DetalleObligacionController::class);
 Route::resource('insumos', \App\Http\Controllers\InsumoController::class);
