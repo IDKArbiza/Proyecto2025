@@ -15,11 +15,19 @@ class Login extends Component
 
         if (Auth::attempt($credentials)) {
             session()->regenerate();
-            return redirect()->route($this->redirectTo());
+
+            $role = Auth::user()->role;
+
+            return match ($role) {
+                'administrador' => redirect()->route('admin.dashboard'),
+                'cajero' => redirect()->route('cajero.dashboard'),
+                default => redirect()->route('usuario.dashboard'),
+            };
         }
 
         $this->addError('email', 'Credenciales incorrectas.');
     }
+
 
     public function redirectTo()
     {

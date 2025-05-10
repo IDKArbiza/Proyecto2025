@@ -2,13 +2,15 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Aplicación</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}"> <!-- Si usás CSS -->
+    <title>{{ config('app.name') }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    @livewireStyles
 </head>
 <body>
-    <div class="container">
-        @yield('content')
-    </div>
+    <main class="py-4">
+        {{ $slot }}
+    </main>
+
+    @livewireScripts
 </body>
 </html>
