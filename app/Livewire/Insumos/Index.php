@@ -19,6 +19,19 @@ class Index extends Component
         'stock' => 'required|integer|min:0',
     ];
 
+    public function messages()
+    {
+        return [
+            'nombre_insumo.required' => 'El nombre del insumo es obligatorio.',
+            'precio.required' => 'El precio es obligatorio.',
+            'precio.numeric' => 'El precio debe ser un número.',
+            'precio.min' => 'El precio no puede ser negativo.',
+            'stock.required' => 'El stock es obligatorio.',
+            'stock.integer' => 'El stock debe ser un número entero.',
+            'stock.min' => 'El stock no puede ser negativo.',
+        ];
+    }
+
     public function render()
     {
         return view('livewire.insumos.index', [

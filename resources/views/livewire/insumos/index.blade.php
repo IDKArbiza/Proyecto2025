@@ -10,10 +10,13 @@
             <input type="text" class="form-control" placeholder="Nombre del Insumo" wire:model.defer="nombre_insumo">
         </div>
         <div class="col-md-3">
-            <input type="number" step="0.01" class="form-control" placeholder="Precio" wire:model.defer="precio">
+            <input type="number" wire:model.defer="precio" class="form-control" placeholder="Precio">
+            @error('precio') <small class="text-danger">{{ $message }}</small> @enderror
+
         </div>
         <div class="col-md-3">
-            <input type="number" class="form-control" placeholder="Stock" wire:model.defer="stock">
+            <input type="number" wire:model.defer="stock" class="form-control" placeholder="Stock">
+            @error('stock') <small class="text-danger">{{ $message }}</small> @enderror
         </div>
         <div class="col-md-2">
             <button class="btn btn-primary w-100">{{ $isEdit ? 'Actualizar' : 'Guardar' }}</button>
