@@ -4,15 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DetalleObligacionController;
 use App\Http\Controllers\TipoObligacionController;
 use App\Http\Controllers\ReservaInsumoController;
+use App\Livewire\Auth\Login;
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', Login::class)->name('login');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin/dashboard', fn() => view('admin.dashboard'))->middleware('role:administrador')->name('admin.dashboard');
+    Route::get('/cajero/dashboard', fn() => view('cajero.dashboard'))->middleware('role:cajero')->name('cajero.dashboard');
+    Route::get('/usuario/dashboard', fn() => view('usuario.dashboard'))->middleware('role:usuario')->name('usuario.dashboard');
 });
-
-Route::resource('detalle_obligaciones', DetalleObligacionController::class);
-Route::resource('insumos', \App\Http\Controllers\InsumoController::class);
-Route::resource('tipo_obligaciones', TipoObligacionController::class)
-    ->parameters(['tipo_obligaciones' => 'tipo_obligacion']);
-Route::resource('alumnos', \App\Http\Controllers\AlumnoController::class);
-Route::resource('reserva_insumo', ReservaInsumoController::class)
-    ->parameters(['reserva_insumo' => 'reserva_insumo']);
