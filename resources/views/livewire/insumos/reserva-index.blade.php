@@ -7,16 +7,13 @@
 
     <form wire:submit.prevent="{{ $isEdit ? 'update' : 'store' }}" class="row g-2 mb-3">
         <div class="col-md-3">
-            <input type="text" class="form-control" placeholder="Cédula" wire:model.defer="cedula">
+            <input type="text" class="form-control" placeholder="Insumo" wire:model.defer="id_insumos">
         </div>
         <div class="col-md-3">
-            <input type="text" class="form-control" placeholder="Nombre" wire:model.defer="nombre">
+            <input type="text" class="form-control" placeholder="Alumno" wire:model.defer="id_alumnos">
         </div>
         <div class="col-md-3">
-            <input type="text" class="form-control" placeholder="Apellido" wire:model.defer="apellido">
-        </div>
-        <div class="col-md-3">
-            <input type="date" class="form-control" wire:model.defer="fecha_nacimiento">
+            <input type="text" class="form-control" placeholder="Cantidad" wire:model.defer="cantidad_reservada">
         </div>
         <div class="col-12">
             <button class="btn btn-primary">{{ $isEdit ? 'Actualizar' : 'Guardar' }}</button>
