@@ -2,6 +2,7 @@
     <!-- Sidebar -->
     <div class="bg-dark text-white p-3" style="width: 250px;">
         <h4 class="mb-4">Panel Cajero</h4>
+        <p>Bienvenido {{ Auth::user()->name }}.</p>
         <ul class="nav flex-column">
             <li class="nav-item">
                 <a href="#" wire:click="$set('seccion', 'alumnos')" class="nav-link text-white">Gestión de Alumnos</a>
