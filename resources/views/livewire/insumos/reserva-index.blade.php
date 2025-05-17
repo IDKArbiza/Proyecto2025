@@ -7,12 +7,35 @@
 
     <form wire:submit.prevent="{{ $isEdit ? 'update' : 'store' }}" class="row g-2 mb-3">
         <div class="col-md-3">
-            <input type="text" class="form-control" placeholder="Insumo" wire:model.defer="id_insumos">
+            <label class="form-label">Insumo</label>
+            <select wire:model.defer="id_insumos" class="form-control w-100" size="5">
+                <option value="" disabled>-- Seleccione un insumo --</option>
+                @foreach(\App\Models\Insumo::all() as $insumo)
+                    <option value="{{ $insumo->id }}">
+                        {{ $insumo->nombre_insumo }} (stock: {{ $insumo->stock }})
+                    </option>
+                @endforeach
+            </select>
+            @error('id_insumos') 
+            <span class="text-danger">{{ $message }}</span> 
+            @enderror
         </div>
         <div class="col-md-3">
-            <input type="text" class="form-control" placeholder="Alumno" wire:model.defer="id_alumnos">
-        </div>
+            <label class="form-label">Alumno</label>
+                <select wire:model.defer="id_alumnos" class="form-control w-100" size="5">
+                    <option value="" disabled>-- Seleccione un alumno --</option>
+                    @foreach(\App\Models\Alumno::all() as $alumno)
+                        <option value="{{ $insumo->id }}">
+                            {{ $alumno->nombre }}, {{ $alumno->apellido}}
+                        </option>
+                    @endforeach
+                </select>
+                @error('id_alumnos') 
+                <span class="text-danger">{{ $message }}</span> 
+                @enderror
+            </div>
         <div class="col-md-3">
+            <label class="form-label">Cantidad</label>
             <input type="text" class="form-control" placeholder="Cantidad" wire:model.defer="cantidad_reservada">
         </div>
         <div class="col-12">
