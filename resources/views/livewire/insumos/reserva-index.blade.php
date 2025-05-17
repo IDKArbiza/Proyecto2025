@@ -29,8 +29,8 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Insumo</th>
                 <th>Alumno</th>
+                <th>Insumo</th>
                 <th>Cantidad</th>
                 <th>Acciones</th>
             </tr>
@@ -38,8 +38,8 @@
         <tbody>
             @foreach($reserva_insumos as $a)
                 <tr>
-                    <td>{{ $a->id_insumos }}</td>
-                    <td>{{ $a->id_alumnos }}</td>
+                    <td>{{ $a->nombre_alumno }}</td>
+                    <td>{{ $a->nombre_insumo }}</td>
                     <td>{{ number_format($a->cantidad_reservada, 0, ',', '.') }}</td>
                     <td>
                         <button class="btn btn-sm btn-warning" wire:click="edit({{ $a->id }})">Editar</button>

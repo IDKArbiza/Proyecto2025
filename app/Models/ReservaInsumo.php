@@ -26,4 +26,16 @@ class ReservaInsumo extends Model
     {
         return $this->belongsTo(Insumo::class, 'id_insumos');
     }
+
+    public function getNombreAlumnoAttribute()
+    {
+        if (!$this->alumno) return null;
+        return $this->alumno->nombre . ' ' . $this->alumno->apellido;
+    }
+
+    // ✅ Accessor para nombre del insumo
+    public function getNombreInsumoAttribute()
+    {
+        return $this->insumo->nombre_insumo ?? null;
+    }
 }
