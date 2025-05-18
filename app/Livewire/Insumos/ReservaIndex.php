@@ -38,11 +38,11 @@ class ReservaIndex extends Component
 
     public function edit($id)
     {
-        $nombre_alumno = ReservaInsumo::findOrFail($id);
+        $reserva = ReservaInsumo::findOrFail($id);
         $this->id_reserva = $id;
-        $this->nombre_alumno = $nombre_alumno->nombre_alumno;
-        $this->nombre_insumo = $alumno->nombre_insumo;
-        $this->cantidad_reservada = $alumno->cantidad_reservada;
+        $this->nombre_alumno = $reserva->nombre_alumno;
+        $this->nombre_insumo = $reserva->nombre_insumo;
+        $this->cantidad_reservada = $reserva->cantidad_reservada;
         $this->isEdit = true;
     }
 
@@ -52,5 +52,20 @@ class ReservaIndex extends Component
         ReservaInsumo::create($this->only(['id_insumos', 'id_alumnos', 'cantidad_reservada',]));
         $this->resetFields();
         session()->flash('message', 'Reserva creada correctamente.');
+    }
+
+    public function update()
+    {
+        $this->validate();
+        $reservaUpd = ReservaInsumo::find($this->id_reserva);
+        $reservaUpd->update($this->only(['cantidad_reservada',]));
+        $this->resetFields();
+        session()->flash('message', 'Reserva actualizada correctamente.');
+    }
+
+    public function delete($id)
+    {
+        ReservaInsumo::destroy($id);
+        session()->flash('message', 'Reserva eliminada correctamente.');
     }
 }

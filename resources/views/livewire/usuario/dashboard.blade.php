@@ -16,7 +16,7 @@
     <!-- Main Content -->
     <div class="flex-grow-1 p-4">
         <div class="alert alert-success">
-            <h1 class="h3">Panel del Cajero</h1>
+            <h1 class="h3">Panel del Usuario</h1>
             <p>Bienvenido {{ Auth::user()->name }}.</p>
         </div>
 
