@@ -39,7 +39,7 @@
             @foreach($insumos as $insumo)
                 <tr>
                     <td>{{ $insumo->nombre_insumo }}</td>
-                    <td>Gs. {{ number_format($insumo->precio, 2) }}</td>
+                    <td>Gs. {{ number_format($insumo->precio, 0,',','.') }}</td>
                     <td>{{ $insumo->stock }}</td>
                     <td>
                         <button class="btn btn-sm btn-warning" wire:click="edit({{ $insumo->id }})">Editar</button>
@@ -51,5 +51,5 @@
         </tbody>
     </table>
 
-    {{ $insumos->links() }}
+    {{-- $insumos->links() --}}
 </div>
