@@ -35,9 +35,10 @@ class Index extends Component
     public function render()
     {
         return view('livewire.insumos.index', [
-            'insumos' => Insumo::orderBy('nombre_insumo', 'asc')->get(),
+            'insumos' => Insumo::orderBy('nombre_insumo')->paginate(10, ['*'], 'insumosPage'),
         ]);
     }
+
 
     public function resetFields()
     {

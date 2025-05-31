@@ -51,5 +51,5 @@
         </tbody>
     </table>
 
-    {{-- $insumos->links() --}}
+    {{ $insumos->links('vendor.pagination.tailwind', ['pageName' => 'insumosPage']) }}
 </div>
