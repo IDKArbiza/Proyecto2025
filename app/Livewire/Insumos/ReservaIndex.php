@@ -5,6 +5,8 @@ namespace App\Livewire\Insumos;
 use Livewire\Component;
 use App\Models\ReservaInsumo;
 use Livewire\WithPagination;
+use App\Models\Alumno;
+use App\Models\Insumo;
 
 class ReservaIndex extends Component
 {
@@ -14,7 +16,8 @@ class ReservaIndex extends Component
     public $id_reserva;
     public $nombre_alumno, $nombre_insumo, $cantidad_reservada;
     public $id_alumnos, $id_insumos;
-    public $cedula, $nombre, $apellido, $fecha_nacimiento, $alumno_id;
+    public $cedula, $nombre, $apellido, $fecha_nacimiento, $alumno_id; 
+    public $lista_alumnos, $lista_insumos;
     public $isEdit = false;
 
     protected $rules = [
@@ -23,6 +26,18 @@ class ReservaIndex extends Component
         'cantidad_reservada' => 'required|numeric',
     ];
 
+    public function reload_data()
+    {
+        $this->lista_alumnos=Alumno::orderBy('nombre', 'asc')->get();
+        $this->lista_insumos=Insumo::orderBy('nombre_insumo', 'asc')->get();
+        \Log::info('reserva_index alumnos '.$this->lista_alumnos);
+        \Log::info('reserva_index insumos '.$this->lista_insumos);
+    }
+
+    public function mount()
+    {
+        $this->reload_data();
+    }
     public function render()
     {
         return view('livewire.insumos.reserva-index', [

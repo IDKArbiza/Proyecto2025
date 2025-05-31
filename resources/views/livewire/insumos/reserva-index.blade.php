@@ -10,7 +10,7 @@
             <label class="form-label">Insumo</label>
             <select wire:model.defer="id_insumos" class="form-control w-100" size="5">
                 <option value="" disabled>-- Seleccione un insumo --</option>
-                @foreach(\App\Models\Insumo::all() as $insumo)
+                @foreach($lista_insumos as $insumo)
                     <option value="{{ $insumo->id }}">
                         {{ $insumo->nombre_insumo }} (stock: {{ $insumo->stock }})
                     </option>
@@ -24,8 +24,8 @@
             <label class="form-label">Alumno</label>
                 <select wire:model.defer="id_alumnos" class="form-control w-100" size="5">
                     <option value="" disabled>-- Seleccione un alumno --</option>
-                    @foreach(\App\Models\Alumno::all() as $alumno)
-                        <option value="{{ $insumo->id }}">
+                    @foreach($lista_alumnos as $alumno)
+                        <option value="{{ $alumno->id }}">
                             {{ $alumno->nombre }}, {{ $alumno->apellido}}
                         </option>
                     @endforeach
