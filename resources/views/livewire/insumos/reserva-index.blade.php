@@ -25,7 +25,7 @@
                 <select wire:model.defer="id_alumnos" class="form-control w-100" size="5">
                     <option value="" disabled>-- Seleccione un alumno --</option>
                     @foreach(\App\Models\Alumno::all() as $alumno)
-                        <option value="{{ $insumo->id }}">
+                        <option value="{{ $alumno->id }}">
                             {{ $alumno->nombre }}, {{ $alumno->apellido}}
                         </option>
                     @endforeach

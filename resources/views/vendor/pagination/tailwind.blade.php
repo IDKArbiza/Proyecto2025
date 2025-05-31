@@ -11,7 +11,7 @@
         @else
             <button
                 wire:click="previousPage('{{ $pageName }}')"
-                class="px-4 py-2 bg-orange-600 text-black rounded hover:bg-indigo-700 transition-colors duration-200"
+                class="px-4 py-2 bg-indigo-600 text-black rounded hover:bg-indigo-700 transition-colors duration-200"
             >
                 Anterior
             </button>
