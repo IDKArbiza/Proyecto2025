@@ -53,5 +53,5 @@
         </tbody>
     </table>
 
-    {{ $alumnos->links() }}
+    {{ $alumnos->links('vendor.pagination.tailwind', ['pageName' => 'alumnosPage']) }}
 </div>
