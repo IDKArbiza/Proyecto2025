@@ -19,12 +19,24 @@ class Index extends Component
     public $isEdit;
     public $fecha_vencimiento;
     public $monto;
+    public function delete($id)
+    {
+        DetalleObligacion::destroy($id);
+        $this->cargar_listas();
+        session()->flash('message', 'Registro eliminado correctamente.');
+
+    }
+
+    public function edit($id)
+    {
+        
+    }
     
     protected $rules = [
         'id_alumnos' => 'required',
         'id_obligaciones' => 'required',
         'fecha_vencimiento' => 'required',
-        'monto' => 'required|numeric|min:1'
+        'monto' => 'required|numeric|min:1',
     ];
     public function store()
     {

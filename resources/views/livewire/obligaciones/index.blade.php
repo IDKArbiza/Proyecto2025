@@ -60,6 +60,7 @@
                 <th>Obligaciones</th>
                 <th>Alumno</th>
                 <th>Fecha de vencimiento</th>
+                <th>Fecha de Pago</th>
                 <th>Monto</th>
                 <th>Acciones</th>
             </tr>
@@ -69,9 +70,12 @@
                 <tr>
                     <td>{{ $a->nombre_obligacion }}</td>
                     <td>{{ $a->nombre_alumno }}, {{ $a->apellido_alumno }}</td>
-
                     <td>{{ \Carbon\Carbon::parse($a->fecha_vencimiento)->format('d/m/Y') }}</td>
-
+                    <td>
+                        @if($a->fecha_pago)
+                            {{ \Carbon\Carbon::parse($a->fecha_pago)->format('d/m/Y') }}
+                        @endif
+                    </td>
                     <td>Gs.{{ number_format($a->monto, 0, ',', '.') }}</td>
                     <td>
                         <button class="btn btn-sm btn-warning" wire:click="edit({{ $a->id }})">Editar</button>
