@@ -20,7 +20,7 @@ class DetalleObligacion extends Model
     ];
 
     protected $casts = [
-        'fecha_pago' => 'date',
+        'fecha_pago' => 'datetime',
         'fecha_vencimiento' => 'date',
     ];
 

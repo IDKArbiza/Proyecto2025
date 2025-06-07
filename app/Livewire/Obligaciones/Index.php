@@ -6,7 +6,7 @@ use Livewire\Component;
 use App\Models\Alumno;
 use App\Models\TipoObligacion;
 use App\Models\DetalleObligacion;
-
+use Carbon\Carbon;
 
 class Index extends Component
 {
@@ -56,6 +56,17 @@ class Index extends Component
         $this->monto = null;
         $this->fecha_vencimiento = null;
         $this->isEdit = false;
+    }
+
+    public function pagar($id)
+    {
+        $dato = DetalleObligacion::findOrFail($id);
+        $fecha = Carbon::today();
+        \Log::info("FECHA A ACTUALIZAR " . $fecha);
+        $dato->fecha_pago = $fecha;
+        $dato->save();
+        $this->cargar_listas();
+        session()->flash('message', 'Obligacion pagada correctamente.');
     }
 
     protected $rules = [

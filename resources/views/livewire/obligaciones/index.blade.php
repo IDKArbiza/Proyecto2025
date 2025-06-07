@@ -78,9 +78,12 @@
                     </td>
                     <td>Gs.{{ number_format($a->monto, 0, ',', '.') }}</td>
                     <td>
-                        <button class="btn btn-sm btn-warning" wire:click="edit({{ $a->id }})">Editar</button>
-                        <button class="btn btn-sm btn-danger" wire:click="delete({{ $a->id }})"
-                            onclick="confirm('¿Seguro de eliminar?') || event.stopImmediatePropagation()">Eliminar</button>
+                        @if(!$a->fecha_pago)
+                            <button class="btn btn-sm btn-info" wire:click="pagar({{ $a->id }})">Pagar</button>
+                            <button class="btn btn-sm btn-warning" wire:click="edit({{ $a->id }})">Editar</button>
+                            <button class="btn btn-sm btn-danger" wire:click="delete({{ $a->id }})"
+                                onclick="confirm('¿Seguro de eliminar?') || event.stopImmediatePropagation()">Eliminar</button>
+                        @endif
                     </td>
                 </tr>
             @endforeach
