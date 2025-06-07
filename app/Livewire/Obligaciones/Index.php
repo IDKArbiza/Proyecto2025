@@ -19,19 +19,45 @@ class Index extends Component
     public $isEdit;
     public $fecha_vencimiento;
     public $monto;
+    public $id_registro_editar;
     public function delete($id)
     {
         DetalleObligacion::destroy($id);
         $this->cargar_listas();
         session()->flash('message', 'Registro eliminado correctamente.');
-
     }
 
     public function edit($id)
     {
-        
+        $dato = DetalleObligacion::findOrFail($id);
+        \Log::info("DETALLE OBLIGACION " . $dato);
+        $this->id_registro_editar = $id;
+        $this->id_obligaciones = $dato->id_obligaciones;
+        $this->id_alumnos = $dato->id_alumnos;
+        $this->monto = $dato->monto;
+        $this->fecha_vencimiento = $dato->fecha_vencimiento->format('Y-m-d');
+        \Log::info("DETALLE FECHA " . $this->fecha_vencimiento);
+        $this->isEdit = true;
     }
     
+    public function update()
+    {
+        $dato = DetalleObligacion::findOrFail($this->id_registro_editar);
+        $dato->update($this->only('monto','fecha_vencimiento'));
+        $this->cargar_listas();
+        $this->resetFields();
+    }
+
+    public function resetFields()
+    {
+        $this->id_registro_editar = null;
+        $this->id_obligaciones = null;
+        $this->id_alumnos = null;
+        $this->monto = null;
+        $this->fecha_vencimiento = null;
+        $this->isEdit = false;
+    }
+
     protected $rules = [
         'id_alumnos' => 'required',
         'id_obligaciones' => 'required',
@@ -43,6 +69,7 @@ class Index extends Component
         $validado=$this->validate();
         DetalleObligacion::create($validado);
         $this->cargar_listas();
+        $this->resetFields();
         session()->flash('message', 'Obligacion creada correctamente.');
     }
     public function cargar_listas()

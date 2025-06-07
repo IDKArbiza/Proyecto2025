@@ -36,7 +36,7 @@
             </div>
         <div class="col-md-3">
             <label class="form-label">Fecha de Vencimiento</label>
-            <input type="date" class="form-control" wire:model.defer="fecha_vencimiento">
+            <input type="date" class="form-control" wire:model="fecha_vencimiento" >
             @error('fecha_vencimiento') 
                 <span class="text-danger">{{ $message }}</span> 
             @enderror
@@ -54,7 +54,7 @@
         </div>
     </form>
 
-    <table class="table table-bordered">
+    <table class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th>Obligaciones</th>

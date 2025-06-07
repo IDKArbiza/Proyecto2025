@@ -19,6 +19,11 @@ class DetalleObligacion extends Model
         'fecha_vencimiento',
     ];
 
+    protected $casts = [
+        'fecha_pago' => 'date',
+        'fecha_vencimiento' => 'date',
+    ];
+
     // Relaciones (opcional)
     public function alumno()
     {
