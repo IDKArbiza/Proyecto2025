@@ -57,18 +57,22 @@
     <table class="table table-bordered">
         <thead>
             <tr>
+                <th>Obligaciones</th>
                 <th>Alumno</th>
-                <th>Insumo</th>
-                <th>Cantidad</th>
+                <th>Fecha de vencimiento</th>
+                <th>Monto</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
             @foreach($lista_obligacion_alumno as $a)
                 <tr>
-                    <td>{{ $a->nombre_alumno }}</td>
-                    <td>{{ $a->nombre_insumo }}</td>
-                    <td>{{ number_format($a->cantidad_reservada, 0, ',', '.') }}</td>
+                    <td>{{ $a->nombre_obligacion }}</td>
+                    <td>{{ $a->nombre_alumno }}, {{ $a->apellido_alumno }}</td>
+
+                    <td>{{ \Carbon\Carbon::parse($a->fecha_vencimiento)->format('d/m/Y') }}</td>
+
+                    <td>Gs.{{ number_format($a->monto, 0, ',', '.') }}</td>
                     <td>
                         <button class="btn btn-sm btn-warning" wire:click="edit({{ $a->id }})">Editar</button>
                         <button class="btn btn-sm btn-danger" wire:click="delete({{ $a->id }})"

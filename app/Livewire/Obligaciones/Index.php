@@ -37,6 +37,7 @@ class Index extends Component
     {
         $this->lista_alumnos=Alumno::orderBy('nombre', 'asc')->get();
         $this->lista_obligaciones=TipoObligacion::orderBy('nombre_obligacion', 'asc')->get();
+        $this->lista_obligacion_alumno = DetalleObligacion::orderBy('id', 'desc')->get();
         
      //   \Log::info('reserva_index alumnos '.$this->lista_alumnos);
      //   \Log::info('reserva_index insumos '.$this->lista_insumos);

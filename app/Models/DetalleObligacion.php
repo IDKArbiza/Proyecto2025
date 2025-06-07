@@ -24,9 +24,25 @@ class DetalleObligacion extends Model
     {
         return $this->belongsTo(Alumno::class, 'id_alumnos');
     }
+    
 
     public function tipoObligacion()
     {
         return $this->belongsTo(TipoObligacion::class, 'id_obligaciones');
+    }
+    
+        // Accesor para nombre del alumno
+    public function getNombreAlumnoAttribute()
+    {
+        return $this->alumno ? $this->alumno->nombre : null;
+    }
+
+    public function getApellidoAlumnoAttribute()
+    {
+        return $this->alumno ? $this->alumno->apellido : null;
+    }
+    public function getNombreObligacionAttribute()
+    {
+        return $this->tipoObligacion ? $this->tipoObligacion->nombre_obligacion : null;
     }
 }
