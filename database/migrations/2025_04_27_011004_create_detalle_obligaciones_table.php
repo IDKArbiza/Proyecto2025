@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_obligaciones');
             $table->unsignedBigInteger('id_alumnos');
             $table->integer('monto');
-            $table->timestamp('fecha_pago');
+            $table->timestamp('fecha_pago')->nullable();
             $table->timestamp('fecha_vencimiento');
             $table->foreign('id_obligaciones')->references('id')->on('tipo_obligaciones')->onDelete('cascade');
             $table->foreign('id_alumnos')->references('id')->on('alumnos')->onDelete('cascade');

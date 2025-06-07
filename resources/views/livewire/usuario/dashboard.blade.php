@@ -23,7 +23,7 @@
         @if ($seccion === 'reserva-insumo')
             @livewire('insumos.reserva-index')
         @elseif ($seccion === 'detalle-obligaciones')
-            @livewire('insumos.index')
+            @livewire('obligaciones.index')
         @else
             <p>Seleccione una opción del panel lateral.</p>
         @endif
