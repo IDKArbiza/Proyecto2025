@@ -14,7 +14,7 @@ class Index extends Component
     public $isEdit = false;
 
     protected $rules = [
-        'cedula' => 'required|string',
+        'cedula' => 'required|integer',
         'nombre' => 'required|string',
         'apellido' => 'required|string',
         'fecha_nacimiento' => 'required|date',
@@ -44,6 +44,7 @@ class Index extends Component
 
     public function edit($id)
     {
+        \Log::info("entra editar " . $id);
         $alumno = Alumno::findOrFail($id);
         $this->alumno_id = $id;
         $this->cedula = $alumno->cedula;
@@ -55,10 +56,15 @@ class Index extends Component
 
     public function update()
     {
-        $this->validate();
+        \Log::info("entra update ".$this->alumno_id );
+        //$this->validate();
+        \Log::info("entra update 1 ".$this->alumno_id );
         $alumno = Alumno::find($this->alumno_id);
+        \Log::info("entra update 2 ".$this->alumno_id );
         $alumno->update($this->only(['cedula', 'nombre', 'apellido', 'fecha_nacimiento']));
+        \Log::info("entra update 3 ".$this->alumno_id );
         $this->resetFields();
+        \Log::info("entra update ".$this->alumno_id );
         session()->flash('message', 'Alumno actualizado correctamente.');
     }
 
