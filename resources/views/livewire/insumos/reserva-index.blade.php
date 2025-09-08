@@ -1,5 +1,5 @@
 <div>
-    <h4>Gestión de Alumnos</h4>
+    <h4>Reserva de Insumos</h4>
 
     @if (session()->has('message'))
         <div class="alert alert-success">{{ session('message') }}</div>
